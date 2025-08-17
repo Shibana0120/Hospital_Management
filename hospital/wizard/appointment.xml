@@ -1,0 +1,33 @@
+<odoo>
+
+
+    <record model="ir.ui.view" id="admission_form">
+      <field name="name">Appointment form</field>
+      <field name="model">hospital.appointment</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="start_date"/>
+          <field name="end_date"/>
+            </group>
+            <footer>
+
+                 <button name="Pdf_report" type="object" string="PDF" class="oe_highlight"/>
+                <button name="Excel_report" type="object" string="Excel" class="oe_highlight"/>
+            </footer>
+
+        </form>
+
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="appointment_action_window">
+      <field name="name">Appointment window</field>
+      <field name="res_model">hospital.appointment</field>
+      <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <!-- menu actions -->
+    <menuitem name="Appointment" id="hospital_appointment_list" parent="hospital_menu_root"
+              action="appointment_action_window"/>
+</odoo>

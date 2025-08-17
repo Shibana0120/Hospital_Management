@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="patient_list">
+      <field name="name">Patient list</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <tree>
+        <field name="patient_num"/>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="notes"/>
+          <field name="adm_date"/>
+          <field name="image"/>
+          <field name="description"/>
+          <field name="doctor"/>
+        </tree>
+      </field>
+    </record>
+
+      <record model="ir.ui.view" id="patient_form">
+      <field name="name">Patient form</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <form>
+          <header>
+          <button name="action_confirm" type="object" string="Confirm" class="oe_highlights"/>
+          <button name="action_done" type="object"  string="Done" class="oe_highlight" />
+          <field name="s_field" widget="statusbar" statusbar_visible="Draft,Confirm,Done"/>
+        </header>
+          <sheet>
+             <group><h3> <field name="patient_num"/> </h3></group>
+            <group>
+          <field name="name"/>
+          <field name="age"/>
+          <field name="notes"/>
+          <field name="adm_date"/>
+          <field name="image"/>
+          <field name="description"/>
+              <field name="doctor"/>
+            </group>
+
+
+          </sheet>
+
+        </form>
+
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="sample_search_view1">
+      <field name="name">New_Search_view1</field>
+      <field name="model">hospital.patient</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name" filter_domain = "['|',('name' , 'ilike',self),('age','ilike',self)]"/>
+
+        </search>
+      </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="patient_action_window">
+      <field name="name">patient window</field>
+      <field name="res_model">hospital.patient</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="MIMS Hospital" id="hospital_menu_root"/>
+
+    <menuitem name="Patient" id="patient_menu" parent="hospital_menu_root"
+              action="patient_action_window"/>
+
+  </data>
+</odoo>

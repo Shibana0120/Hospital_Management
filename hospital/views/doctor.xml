@@ -1,0 +1,49 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="doctor_list">
+      <field name="name">doctor list</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="doct_name"/>
+          <field name="doct_age"/>
+          <field name="image"/>
+          <field name="spc"/>
+          <field name="user_id"/>
+
+        </tree>
+      </field>
+    </record>
+
+      <record model="ir.ui.view" id="doctor_form">
+      <field name="name">doctor form</field>
+      <field name="model">hospital.doctor</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+          <field name="doct_name"/>
+          <field name="doct_age"/>
+          <field name="image"/>
+          <field name="spc"/>
+              <field name="user_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="doctor_action_window">
+      <field name="name">doctor window</field>
+      <field name="res_model">hospital.doctor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <menuitem name="Doctor" id="doctor_menu" parent="hospital_menu_root"
+              action="doctor_action_window"/>
+
+  </data>
+</odoo>

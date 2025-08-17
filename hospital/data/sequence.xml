@@ -1,0 +1,13 @@
+<odoo>
+     <data noupdate="1">
+
+        <record id="seq_patient" model="ir.sequence">
+            <field name="name">Patient Registration</field>
+<!--            <field name="code">name based on our choice</field>-->
+            <field name="code">patient.no.sequence</field>
+            <field name="prefix">No</field>
+            <field name="padding">2</field>
+            <field name="company_id" eval="False"/>
+        </record>
+     </data>
+</odoo>
